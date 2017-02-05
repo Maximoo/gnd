@@ -1,0 +1,104 @@
+$row-height: 80px;
+$header-height: $row-height - 30px;
+
+.gnd{
+  text-align: center;
+  &__header{
+    &, &__inner{
+      position: relative;
+      height: $header-height;
+    }
+    &__inner{
+      &--fixed{
+        position: fixed;
+        z-index: 2;
+      }
+      &--absolute{
+        position: absolute;
+        z-index: 2;
+      }
+    }
+    &__prev, &__next{
+      position: absolute;
+      top: 0;
+      height: $header-height;
+      width: 42px;
+      line-height: $header-height;
+      cursor: pointer;
+      text-align: center;
+      opacity: 0;
+      -webkit-transition: opacity 200ms ease-out;
+         -moz-transition: opacity 200ms ease-out;
+          -ms-transition: opacity 200ms ease-out;
+           -o-transition: opacity 200ms ease-out;
+              transition: opacity 200ms ease-out;
+      @media (max-width:321px) {
+        width: 35px;
+      }
+    }
+    &__prev{ 
+      left: 0; 
+      .fa{ 
+        margin-left: -2px; 
+      }
+      .gnd--prev &{
+        opacity: 1;  
+      }
+    }
+    &__next{ 
+      right: 0; 
+      .fa{ 
+        margin-right: -4px; 
+      }
+      .gnd--next &{
+        opacity: 1;  
+      }
+    }
+  }
+  &__date{
+    height: $header-height;
+  }
+  &__time{
+    &__item{
+      text-align: center;
+      height: $row-height;
+      line-height: $row-height;
+    }
+  }
+  &__cols{
+    position: relative;
+    overflow: hidden;
+    &__inner{
+      width: 9000px;
+      -webkit-transition: margin-left 200ms ease-out;
+         -moz-transition: margin-left 200ms ease-out;
+          -ms-transition: margin-left 200ms ease-out;
+           -o-transition: margin-left 200ms ease-out;
+              transition: margin-left 200ms ease-out;
+    }
+    @for $i from 0 through 48 { 
+      &--items#{$i}{ height: $row-height * $i; }
+    }
+  } 
+  &__col{
+    float:left;
+    position: relative;
+    &__row{
+      width: 100%;
+      height: $row-height;
+      left: 0;
+      position: absolute;
+      &--header{
+        height: $header-height;
+        line-height: $header-height;
+        position: relative;
+      }
+      @for $i from 0 through 48 { 
+        &--top#{$i}{ top: $row-height * $i; }
+      } 
+      @for $i from 1 through 10 { 
+        &--slots#{$i}{ height: $row-height * $i; }
+      }
+    }
+  }
+}
